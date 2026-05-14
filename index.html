@@ -1509,8 +1509,8 @@ footer {
 // Replace these with your actual Supabase project values
 // Found at: Supabase Dashboard > Settings > API
 // =====================================================
-const SUPABASE_URL = 'https://ydldmatwvdcuwvzyuekt.supabase.co';           // e.g. https://xxxxx.supabase.co
-const SUPABASE_ANON_KEY = 'sb_publishable_y5CsYHIg6nH_lQKaPcPxJg_5UYw4p0U'; // Your anon/public key
+const SUPABASE_URL = 'https://ydldmatwvdcuwvzyuekt.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_y5CsYHIg6nH_lQKaPcPxJg_5UYw4p0U';
 // =====================================================
 
 let albums = [];
@@ -1675,7 +1675,7 @@ function openGalleryModal(albumName, photos) {
         </button>
       </div>
     `;
-    div.querySelector('img').addEventListener('click', () => openLightbox(photo.url));
+    div.addEventListener('click', () => openLightbox(photo.url));
     div.querySelector('.photo-download-btn').addEventListener('click', (e) => {
       e.stopPropagation();
       downloadImage(photo.url, photo.filename || `${albumName.replace(/[^a-z0-9]/gi,'_')}_${i+1}.jpg`);
