@@ -6,6 +6,7 @@
 <title>Meko Visuals — Photography</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1692,13 +1693,58 @@ document.getElementById('modalClose').addEventListener('click', () => {
   enableSmoothScroll();
 });
 
-// Download All
-document.getElementById('downloadAllBtn').addEventListener('click', () => {
-  currentPhotos.forEach((photo, i) => {
-    setTimeout(() => {
-      downloadImage(photo.url, photo.filename || `${currentAlbumName.replace(/[^a-z0-9]/gi,'_')}_${i+1}.jpg`);
-    }, i * 400);
-  });
+// Download All as ZIP
+document.getElementById('downloadAllBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('downloadAllBtn');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = `
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Zipping 0/${currentPhotos.length}...
+  `;
+  btn.disabled = true;
+
+  try {
+    const zip = new JSZip();
+    const folderName = currentAlbumName.replace(/[^a-z0-9]/gi, '_');
+
+    for (let i = 0; i < currentPhotos.length; i++) {
+      const photo = currentPhotos[i];
+      btn.innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Zipping ${i + 1}/${currentPhotos.length}...
+      `;
+      const res = await fetch(photo.url);
+      const blob = await res.blob();
+      const ext = photo.filename ? photo.filename.split('.').pop() : 'jpg';
+      zip.file(`${photo.filename || `${folderName}_${i + 1}.${ext}`}`, blob);
+    }
+
+    btn.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Creating ZIP...
+    `;
+
+    const zipBlob = await zip.generateAsync({ type: 'blob' });
+    const blobUrl = URL.createObjectURL(zipBlob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = `${folderName}.zip`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(blobUrl);
+  } catch (err) {
+    console.error('ZIP download failed:', err);
+    // Fallback to individual downloads
+    currentPhotos.forEach((photo, i) => {
+      setTimeout(() => {
+        downloadImage(photo.url, photo.filename || `${currentAlbumName.replace(/[^a-z0-9]/gi,'_')}_${i+1}.jpg`);
+      }, i * 400);
+    });
+  } finally {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }
 });
 
 function downloadImage(url, filename) {
