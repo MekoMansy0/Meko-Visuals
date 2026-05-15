@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meko Visuals — Photography</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAADWElEQVR4nO1UTUhbWRQ+7953Hy8+SWoUhAc+SDRD6iLWRRaJrQjpIgQiuDQbF8Ik0qw6G4W6s1MFXesiY5UWXNmFiw4upjC1mJ2ChgnkzTSCoZLBSUaZ/JjXd+8sbnkTW1ulP7Py2917z/3O+c637gW4xjW+FMLlEYKAELKWlFLG2FdKfp7aAkJIEC6v7B3Jxw4QQpRSAHC73b29vW1tbYyx4+PjTCZTKBR4+qtIuTgBZ1dVdXR0FAAymUyxWBRFsbOzs6+vr16vp1Kp09PTK+a4gB0ANE17+PDHUCj0YcDt23fm5uZUVeU6LmG7sPaWlpaVlZV6vdbd3T0+Po4xliQpEAhgjAkhr15tLS4uJpNJWZavbsZ/tTscjkePZpPJpKIoDodjcnISAL6Px589W+dhhBAACIfDsVgMADDGV2LntaiqOjMz4/P5+GY0Gh0YGNA0bX5+fmRkBAAGBwd5KQihqakpSZI+LQI1szudznv3kktLS3t7e5IkAYDH49nf349EIrr+ey6nx2KxeDze2trKb5VKJZfLBeedEASheSlau5TSsbGxp0+fFAoFURQbjUZPT0+x+KfX6z05OTEM4+ZNb7Vaff78ZwDgE3x0dCRJEmOMEIIx5v7V6/VmBaLF/p3HUy6Xs9ms9QL8fv/r13/cutX/8uWvoVBIluWFhYXh4eGJiYmtrS1ZloeGhoLB4Js3R4SI1DRNShFCHR0dqdRPBwd5PsTvEjDGHDduOJ1Ou91uGEaj0SCEyLKsqmo2+1t7e3vo7t0f7t8HgI2NjUAg4Ha5/iqVMEarq6uHh4e1Ws00TV6yx+OpVP45p4BSKgjCzs6O2+1OJBKCAI8fr9jtdkJIV1fX+vr69PT0i19e5PN5jLFpmul0Op1O22w2r9ebzWabu88Y03WdLz/6BvnYhcPh2dnZYDAIAIqiWE4ihPiYPngw3d/f/+F/9Z7J6D1q7gcARCKRs7Oz7e1thFClUrE+OEqpYRiJROLgIL+7u2vFW2CMNdcuNp9ZfeTXlpeXLaWcRRRFn88XjUZzudza2hrv2MV9sARdciwIjDFN01RV9fv9NtlWrVU3Nzd1XbeG7TMTIIQssYqiEEIIIX+Xy8bbt9D0mX99cJ++AfH52bjGNf5P/Avs7mDnq/zVsQAAAABJRU5ErkJggg==">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -411,13 +412,13 @@ nav.scrolled .nav-logo-img { height: 28px; }
 .hero-cta:hover svg { transform: translateX(6px); }
 .hero-scroll {
   position: absolute;
-  bottom: 48px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   color: var(--text-muted);
   font-size: 10px;
   letter-spacing: 4px;
@@ -427,7 +428,7 @@ nav.scrolled .nav-logo-img { height: 28px; }
 }
 .hero-scroll-line {
   width: 1px;
-  height: 50px;
+  height: 32px;
   background: linear-gradient(180deg, var(--accent), transparent);
   animation: scrollPulse 2.5s ease-in-out infinite;
 }
@@ -1230,7 +1231,7 @@ footer {
 <div class="loader" id="loader">
   <div class="loader-logo">
     <!-- Replace src with your logo PNG -->
-    <img src="" alt="Meko Visuals" onerror="this.parentElement.innerHTML='<svg viewBox=&quot;0 0 80 80&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;40&quot; cy=&quot;40&quot; r=&quot;38&quot; stroke=&quot;%23c9a87c&quot; stroke-width=&quot;1&quot;/><path d=&quot;M28 52V28l12 18L52 28v24&quot; stroke=&quot;%23f5f0eb&quot; stroke-width=&quot;1.5&quot; fill=&quot;none&quot;/></svg>'">
+    <img src="mekovisualsLogoTrans.png" alt="Meko Visuals" onerror="this.parentElement.innerHTML='<svg viewBox=&quot;0 0 80 80&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;40&quot; cy=&quot;40&quot; r=&quot;38&quot; stroke=&quot;%23c9a87c&quot; stroke-width=&quot;1&quot;/><path d=&quot;M28 52V28l12 18L52 28v24&quot; stroke=&quot;%23f5f0eb&quot; stroke-width=&quot;1.5&quot; fill=&quot;none&quot;/></svg>'">
   </div>
   <div class="loader-text">
     <span style="animation-delay:0.2s">M</span><span style="animation-delay:0.25s">E</span><span style="animation-delay:0.3s">K</span><span style="animation-delay:0.35s">O</span><span style="animation-delay:0.5s">&nbsp;</span><span style="animation-delay:0.55s">V</span><span style="animation-delay:0.6s">I</span><span style="animation-delay:0.65s">S</span><span style="animation-delay:0.7s">U</span><span style="animation-delay:0.75s">A</span><span style="animation-delay:0.8s">L</span><span style="animation-delay:0.85s">S</span>
@@ -1283,7 +1284,7 @@ footer {
 <nav id="nav">
   <div class="nav-left">
     <!-- Replace src with your logo PNG path -->
-    <img src="" alt="Meko Visuals" class="nav-logo-img" onerror="this.style.display='none'">
+    <img src="mekovisualsLogoTrans.png" alt="Meko Visuals" class="nav-logo-img" onerror="this.style.display='none'">
     <a href="#" class="nav-logo-text">Meko Visuals</a>
   </div>
   <ul class="nav-links">
@@ -1305,7 +1306,7 @@ footer {
   <div class="hero-content">
     <div class="hero-logo">
       <!-- Replace src with your transparent PNG logo -->
-      <img src="" alt="Meko Visuals Logo" onerror="this.parentElement.innerHTML='<svg viewBox=&quot;0 0 120 120&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;60&quot; cy=&quot;60&quot; r=&quot;56&quot; stroke=&quot;%23c9a87c&quot; stroke-width=&quot;1&quot;/><path d=&quot;M38 82V38l22 30L82 38v44&quot; stroke=&quot;%23f5f0eb&quot; stroke-width=&quot;2&quot; fill=&quot;none&quot;/></svg>'">
+      <img src="mekovisualsLogoTrans.png" alt="Meko Visuals Logo" onerror="this.parentElement.innerHTML='<svg viewBox=&quot;0 0 120 120&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;60&quot; cy=&quot;60&quot; r=&quot;56&quot; stroke=&quot;%23c9a87c&quot; stroke-width=&quot;1&quot;/><path d=&quot;M38 82V38l22 30L82 38v44&quot; stroke=&quot;%23f5f0eb&quot; stroke-width=&quot;2&quot; fill=&quot;none&quot;/></svg>'">
     </div>
     <div class="hero-eyebrow">Photography &amp; Visual Storytelling</div>
     <h1 class="hero-title">
@@ -1489,7 +1490,7 @@ footer {
 <!-- Footer -->
 <footer>
   <div class="footer-left">
-    <img src="" alt="" class="footer-logo-img" onerror="this.style.display='none'">
+    <img src="mekovisualsLogoTrans.png" alt="" class="footer-logo-img" onerror="this.style.display='none'">
     <span class="footer-logo-text">Meko Visuals</span>
   </div>
   <ul class="footer-links">
