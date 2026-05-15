@@ -1513,19 +1513,19 @@ footer {
 <section class="stats">
   <div class="stats-grid">
     <div class="reveal stagger-1">
-      <div class="stat-number" data-target="100">0</div>
+      <div class="stat-number" data-target="500">0</div>
       <div class="stat-label">Sessions Shot</div>
     </div>
     <div class="reveal stagger-2">
-      <div class="stat-number" data-target="1000">0</div>
-      <div class="stat-label">Photos Delivered</div>
+      <div class="stat-number" data-target="50">0</div>
+      <div class="stat-label">Brands Served</div>
     </div>
     <div class="reveal stagger-3">
-      <div class="stat-number" data-target="50">0</div>
-      <div class="stat-label">Trusted Customers</div>
+      <div class="stat-number" data-target="100">0</div>
+      <div class="stat-label">5-Star Reviews</div>
     </div>
     <div class="reveal stagger-4">
-      <div class="stat-number" data-target="2">0</div>
+      <div class="stat-number" data-target="3">0</div>
       <div class="stat-label">Years Experience</div>
     </div>
   </div>
@@ -1609,6 +1609,11 @@ async function loadAlbums() {
     );
     albums = await res.json();
     renderAlbums();
+    // Recalculate again after cover images have loaded
+    if (typeof setBodyHeight === 'function') {
+      setTimeout(setBodyHeight, 1000);
+      setTimeout(setBodyHeight, 3000);
+    }
   } catch (err) {
     console.error('Failed to load albums:', err);
     albumsGrid.innerHTML = '<p style="color:var(--text-muted);text-align:center;grid-column:1/-1">Gallery loading... Check back soon.</p>';
@@ -1665,6 +1670,11 @@ function renderAlbums() {
     // Observe for reveal animation
     revealObserver.observe(card);
   });
+
+  // Recalculate body height for smooth scroll after dynamic content loads
+  if (typeof setBodyHeight === 'function') {
+    setTimeout(setBodyHeight, 100);
+  }
 }
 
 // ===== PASSWORD SYSTEM (Server-side verification) =====
