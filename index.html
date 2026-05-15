@@ -45,13 +45,16 @@ body {
 
 /* ===== SMOOTH SCROLL WRAPPER ===== */
 .smooth-wrapper {
+  width: 100%;
+}
+.smooth-wrapper.smooth-active {
   position: fixed;
   top: 0; left: 0;
-  width: 100%;
   height: 100%;
   overflow: hidden;
 }
-.smooth-content {
+.smooth-content {}
+.smooth-wrapper.smooth-active .smooth-content {
   will-change: transform;
 }
 
@@ -1816,15 +1819,13 @@ function smoothScroll() {
 function disableSmoothScroll() {
   isSmooth = false;
   document.body.style.height = '';
-  wrapper.style.position = '';
-  wrapper.style.overflow = '';
+  wrapper.classList.remove('smooth-active');
   content.style.transform = '';
 }
 function enableSmoothScroll() {
   isSmooth = true;
   setBodyHeight();
-  wrapper.style.position = 'fixed';
-  wrapper.style.overflow = 'hidden';
+  wrapper.classList.add('smooth-active');
 }
 
 function updateParallax() {
@@ -1851,11 +1852,9 @@ function updateNav() {
 
 // Init smooth scroll
 function initSmoothScroll() {
-  if (window.innerWidth <= 768) {
-    // Fallback to normal scroll on mobile
-    wrapper.style.position = '';
-    wrapper.style.overflow = '';
-    content.style.transform = '';
+  // Disable on mobile/tablet or touch devices
+  if (window.innerWidth <= 768 || 'ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    // Normal scrolling — no wrapper manipulation needed
     window.addEventListener('scroll', () => {
       updateScrollProgress();
       updateNav();
@@ -1863,6 +1862,7 @@ function initSmoothScroll() {
     return;
   }
   setBodyHeight();
+  wrapper.classList.add('smooth-active');
   smoothScroll();
   window.addEventListener('resize', setBodyHeight);
 }
