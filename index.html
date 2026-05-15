@@ -1536,7 +1536,7 @@ footer {
 <section class="gallery" id="gallery">
   <div class="section-header">
     <h2 class="reveal">Client <em>Gallery</em></h2>
-    <p class="reveal stagger-1">Private galleries for each session — password protected</p>
+    <p class="reveal stagger-1">Private & public galleries for each session — private are password protected</p>
   </div>
   <div class="gallery-albums" id="albumsGrid">
     <!-- Albums are rendered via JS — see albumData below -->
@@ -1952,6 +1952,23 @@ function initSmoothScroll() {
   wrapper.classList.add('smooth-active');
   smoothScroll();
   window.addEventListener('resize', setBodyHeight);
+
+  // Recalculate body height whenever any image loads
+  document.addEventListener('load', (e) => {
+    if (e.target.tagName === 'IMG') setBodyHeight();
+  }, true);
+
+  // Also recalculate when DOM changes (albums loading dynamically)
+  const heightObserver = new MutationObserver(() => setBodyHeight());
+  heightObserver.observe(content, { childList: true, subtree: true });
+
+  // Periodic recalc for the first 10 seconds to catch late-loading content
+  let recalcCount = 0;
+  const recalcInterval = setInterval(() => {
+    setBodyHeight();
+    recalcCount++;
+    if (recalcCount >= 20) clearInterval(recalcInterval);
+  }, 500);
 }
 initSmoothScroll();
 
