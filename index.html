@@ -58,6 +58,24 @@ body {
   will-change: transform;
 }
 
+/* iOS Safari fix */
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    height: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .smooth-wrapper {
+    position: static !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+  .smooth-content {
+    transform: none !important;
+    will-change: auto !important;
+  }
+}
+
 /* ===== SCROLL PROGRESS ===== */
 .scroll-progress {
   position: fixed;
