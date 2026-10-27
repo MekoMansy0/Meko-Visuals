@@ -1203,6 +1203,50 @@ nav.scrolled .nav-logo-img { height: 28px; }
 .cta-btn:hover::before { transform: translateX(0); }
 .cta-btn span { position: relative; z-index: 1; }
 
+/* ===== CONTACT SECTION ===== */
+.contact-section {
+  padding: clamp(60px, 8vw, 120px) clamp(24px, 8vw, 200px);
+  text-align: center;
+  border-top: 1px solid rgba(245,240,235,0.04);
+}
+.contact-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4.5vw, 60px);
+  font-weight: 400;
+  letter-spacing: -1px;
+  margin-bottom: 48px;
+}
+.contact-section h2 em { font-style: italic; color: var(--accent); }
+.contact-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 260px;
+  padding: 36px 40px;
+  border: 1px solid rgba(245,240,235,0.08);
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.4s var(--ease-smooth), color 0.4s var(--ease-smooth);
+}
+.contact-item:hover { border-color: var(--accent); color: var(--accent); }
+.contact-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.contact-value {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.2vw, 26px);
+  overflow-wrap: anywhere;
+}
+
 /* ===== FOOTER ===== */
 footer {
   padding: 56px clamp(24px, 5vw, 80px) 80px;
@@ -1552,12 +1596,27 @@ footer {
 </section>
 
 <!-- CTA -->
-<section class="cta-section" id="contact">
+<section class="cta-section">
   <h2 class="reveal">Let's Create<br>Something <em>Unforgettable</em></h2>
   <p class="reveal stagger-1">Your story deserves to be seen. Let's make it happen.</p>
   <a href="mailto:mekovisuals@gmail.com" class="cta-btn reveal stagger-2">
     <span>Book Your Session</span>
   </a>
+</section>
+
+<!-- Contact -->
+<section class="contact-section" id="contact">
+  <h2 class="reveal">Contact <em>Me</em></h2>
+  <div class="contact-grid">
+    <a href="mailto:mekovisuals@gmail.com" class="contact-item reveal stagger-1">
+      <span class="contact-label">Email</span>
+      <span class="contact-value">mekovisuals@gmail.com</span>
+    </a>
+    <a href="tel:+19782376309" class="contact-item reveal stagger-2">
+      <span class="contact-label">Phone</span>
+      <span class="contact-value">978-237-6309</span>
+    </a>
+  </div>
 </section>
 
 <!-- Footer -->
