@@ -1203,6 +1203,41 @@ nav.scrolled .nav-logo-img { height: 28px; }
 .cta-btn:hover::before { transform: translateX(0); }
 .cta-btn span { position: relative; z-index: 1; }
 
+/* ===== CONTACT INFO ===== */
+.contact-info {
+  padding: clamp(60px, 8vw, 120px) clamp(24px, 5vw, 80px);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.contact-card {
+  background: var(--bg-elevated);
+  padding: clamp(32px, 3.5vw, 48px);
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.6s var(--ease-smooth);
+}
+.contact-card:hover { background: var(--bg-card); }
+.contact-label {
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.contact-value {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2vw, 24px);
+  overflow-wrap: anywhere;
+  transition: color 0.4s var(--ease-smooth);
+}
+.contact-card:hover .contact-value { color: var(--accent); }
+
 /* ===== FOOTER ===== */
 footer {
   padding: 56px clamp(24px, 5vw, 80px) 80px;
@@ -1558,6 +1593,24 @@ footer {
   <a href="mailto:mekovisuals@gmail.com" class="cta-btn reveal stagger-2">
     <span>Book Your Session</span>
   </a>
+</section>
+
+<!-- Contact Info -->
+<section class="contact-info" id="contact-info">
+  <div class="section-header">
+    <h2 class="reveal">Contact <em>Me</em></h2>
+    <p class="reveal stagger-1">Reach out directly — I'd love to hear from you</p>
+  </div>
+  <div class="contact-grid">
+    <a href="mailto:mekovisuals@gmail.com" class="contact-card reveal stagger-1">
+      <div class="contact-label">Email</div>
+      <div class="contact-value">mekovisuals@gmail.com</div>
+    </a>
+    <a href="tel:+19782376309" class="contact-card reveal stagger-2">
+      <div class="contact-label">Phone</div>
+      <div class="contact-value">978-237-6309</div>
+    </a>
+  </div>
 </section>
 
 <!-- Footer -->
